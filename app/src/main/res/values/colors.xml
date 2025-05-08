@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#F8F9F8</color>
+    <color name="topBar">#B7D2B7</color>
+    <color name="saveButton">#A3C7A3</color>
+    <color name="addCategoryButton">#F8F9F8</color>
+    <color name="addCategoryText">#B7D2B7</color>
+    <color name="textPrimary">#2D2D2D</color>
+    <color name="textSecondary">#7A7A7A</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="accentAccommodation">#D6EFD6</color>
+    <color name="accentFood">#FFE5E5</color>
+    <color name="accentTransportation">#E5F6F8</color>
+    <color name="categoryIconAccommodation">#A3C7A3</color>
+    <color name="categoryIconFood">#F7B2B2</color>
+    <color name="categoryIconTransportation">#A3D7E7</color>
+    <!-- Peach/Orange theme for Diary -->
+    <color name="diaryPeachLight">#FFF8F4</color>
+    <color name="diaryPeach">#FFDCC7</color>
+    <color name="diaryAccent">#FFB980</color>
+    <color name="diaryHeart">#FF6F61</color>
+    <color name="diaryTextPrimary">#2D2D2D</color>
+    <color name="diaryTextSecondary">#7A7A7A</color>
+    <color name="diaryCardBg">#FFFFFF</color>
+    <color name="diaryPhotoBg">#FFF3E6</color>
+</resources>

@@ -1,0 +1,31 @@
+<resources>
+    <string-array name="currencies">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>TRY</item>
+    </string-array>
+    <string-array name="duration_types">
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+    </string-array>
+    <!-- Mood options for Diary -->
+    <string-array name="mood_options">
+        <item>😊 Happy</item>
+        <item>😢 Sad</item>
+        <item>😎 Excited</item>
+        <item>😴 Tired</item>
+        <item>❤️ Loved it</item>
+        <item>😐 Neutral</item>
+    </string-array>
+    <!-- Weather options for Diary -->
+    <string-array name="weather_options">
+        <item>☀️ Sunny</item>
+        <item>🌧️ Rainy</item>
+        <item>⛅ Partly Cloudy</item>
+        <item>❄️ Snowy</item>
+        <item>🌬️ Windy</item>
+        <item>🌩️ Stormy</item>
+    </string-array>
+</resources>

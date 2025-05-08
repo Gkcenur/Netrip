@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Netrip</string>
+    <string name="add_budget">Add Budget</string>
+    <string name="save">Save</string>
+    <string name="back">Back</string>
+    <string name="trip">Trip</string>
+    <string name="total_budget">Total Budget</string>
+    <string name="duration">Duration</string>
+    <string name="category_budgets">Category Budgets</string>
+    <string name="add_category">+ Add Category</string>
+    <string name="accommodation">Accommodation</string>
+    <string name="food">Food</string>
+    <string name="transportation">Transportation</string>
+    <string name="days">Days</string>
+    <string name="usd">USD</string>
+    <string name="new_category">New Category</string>
+    <string name="enter_category_name">Enter category name</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <!-- Diary/Memory Section -->
+    <string name="add_diary">Add Diary Entry</string>
+    <string name="new_memory">New Memory</string>
+    <string name="title_of_memory">Title of your memory</string>
+    <string name="place">Place</string>
+    <string name="add_place">Add Place</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="photos">Photos</string>
+    <string name="notes">Notes</string>
+    <string name="write_experience">Write about your experience...</string>
+    <string name="weather">Weather</string>
+    <string name="mood">Mood</string>
+    <string name="enter_place">Enter Place</string>
+    <string name="select_date_time">Select Date and Time</string>
+    <string name="add">Add</string>
+</resources>
