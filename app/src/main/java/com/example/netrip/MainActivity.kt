@@ -24,5 +24,14 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnOpenAddDiary).setOnClickListener {
             startActivity(Intent(this, AddDiaryActivity::class.java))
         }
+        findViewById<Button>(R.id.btnOpenAddExpense).setOnClickListener {
+            startActivity(Intent(this, AddExpenseActivity::class.java))
+        }
+        findViewById<Button>(R.id.btnOpenAddReservation).setOnClickListener {
+            startActivity(Intent(this, AddReservationActivity::class.java))
+        }
+        findViewById<Button>(R.id.btnOpenCurrencyConverter).setOnClickListener {
+            startActivity(Intent(this, CurrencyConverterActivity::class.java))
+        }
     }
 }

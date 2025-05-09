@@ -19,7 +19,7 @@
 
         <!-- Main entry point of the app -->
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,14 +28,22 @@
         </activity>
 
         <!-- Add Budget Activity -->
-        <activity
-            android:name=".AddBudgetActivity"
-            android:exported="true" />
+        <activity android:name=".AddBudgetActivity" />
 
         <!-- Add Diary Activity -->
-        <activity
-            android:name=".AddDiaryActivity"
-            android:exported="true" />
+        <activity android:name=".AddDiaryActivity" />
+
+        <!-- Add Expense Activity -->
+        <activity android:name=".AddExpenseActivity" />
+
+        <!-- Add Reservation Activity -->
+        <activity android:name=".AddReservationActivity" />
+
+        <!-- Add Currency Converter Activity -->
+        <activity android:name=".CurrencyConverterActivity" />
+
+        <!-- Add Profile Activity -->
+        <activity android:name=".ProfileActivity" />
 
     </application>
 

@@ -96,7 +96,6 @@ class AddDiaryActivity : AppCompatActivity() {
     }
 
     private fun saveDiaryEntry() {
-        val selectedWeather = tvWeatherIcon.text.toString() + " " + etWeatherTemp.text.toString() + "°C"
         // Use selectedWeather as needed
         // TODO: Gather all data and save the diary entry
     }
