@@ -20,5 +20,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, TravelDiaryActivity::class.java)
             startActivity(intent)
         }
+        val travelPlannerButton = findViewById<LinearLayout>(R.id.quickAccessTravelPlanner)
+        travelPlannerButton.setOnClickListener {
+            val intent = Intent(this, TravelPlannerActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

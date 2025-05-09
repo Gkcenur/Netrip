@@ -48,6 +48,9 @@
         <!-- Add Travel Diary Activity -->
         <activity android:name=".TravelDiaryActivity" />
 
+        <!-- Add Travel Planner Activity -->
+        <activity android:name=".TravelPlannerActivity" />
+
     </application>
 
 </manifest>

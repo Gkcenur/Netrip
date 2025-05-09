@@ -34,4 +34,7 @@
     <color name="diaryOrangePhoto">#FFF3E6</color>
     <color name="diaryGreenLight">#E6F4E6</color>
     <color name="diaryYellow">#FFD700</color>
+    <color name="green">#4CAF50</color>
+    <color name="orange">#FF9800</color>
+    <color name="heartRed">#FF6F61</color>
 </resources>

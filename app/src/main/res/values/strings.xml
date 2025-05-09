@@ -86,4 +86,6 @@
     <string name="preferences">Preferences</string>
     <string name="search">Search</string>
     <string name="like">Like</string>
+    <string name="favorite">Favorite</string>
+    <string name="next">Next</string>
 </resources>
