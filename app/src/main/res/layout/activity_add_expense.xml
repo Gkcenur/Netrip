@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/diaryPeach"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="2dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/back" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Expense"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paris, France"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Save"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@color/diaryPeach"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Amount -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card"
+                android:hint="$42.50"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                android:padding="12dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvCurrency"
+                android:layout_width="60dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="USD"
+                android:textSize="16sp"
+                android:background="@drawable/bg_card"
+                android:layout_marginStart="8dp"
+                android:textColor="@android:color/black"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <!-- Category -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <ToggleButton
+                android:id="@+id/btnCategoryFood"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Food"
+                android:textOn="Food"
+                android:textOff="Food"
+                android:background="@drawable/bg_card"
+                android:textColor="@color/diaryPeach"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <ToggleButton
+                android:id="@+id/btnCategoryTransport"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Transport"
+                android:textOn="Transport"
+                android:textOff="Transport"
+                android:background="@drawable/bg_card"
+                android:textColor="@color/diaryPeach"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <ToggleButton
+                android:id="@+id/btnCategoryActivities"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Activities"
+                android:textOn="Activities"
+                android:textOff="Activities"
+                android:background="@drawable/bg_card"
+                android:textColor="@color/diaryPeach"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <ToggleButton
+                android:id="@+id/btnCategoryShopping"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Shopping"
+                android:textOn="Shopping"
+                android:textOff="Shopping"
+                android:background="@drawable/bg_card"
+                android:textColor="@color/diaryPeach"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Date and Time -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date and Time"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card"
+                android:hint="May 18, 2025"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/etTime"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card"
+                android:hint="14:30"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:padding="12dp" />
+        </LinearLayout>
+
+        <!-- Location -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_card"
+            android:hint="Le Jules Verne, Eiffel Tower"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Notes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/etNotes"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_card"
+            android:hint="Lunch with great view of Paris"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:gravity="top"
+            android:layout_marginTop="8dp" />
+
+        <!-- Payment Method -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/etPaymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_card"
+            android:hint="Credit Card (Visa ****4582)"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

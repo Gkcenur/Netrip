@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_diary_card_white"
+    android:layout_marginBottom="16dp"
+    android:padding="0dp">
+
+    <!-- Başlık (renkli, köşeleri üstten yuvarlatılmış) -->
+    <LinearLayout
+        android:id="@+id/headerBg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_diary_card_header_orange"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_location_pin"
+            android:contentDescription="@string/location" />
+
+        <TextView
+            android:id="@+id/tvPlace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eiffel Tower"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:textSize="15sp"
+            android:layout_marginStart="6dp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="May 18, 2025"
+            android:textColor="@color/textSecondary"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Fotoğraf alanı (kart gövdesinin içinde, başlık rengine uygun) -->
+    <LinearLayout
+        android:id="@+id/photoRow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_diary_photo_orange"
+            android:layout_marginEnd="4dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_diary_photo_orange"
+            android:layout_marginEnd="4dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_diary_photo_orange"/>
+    </LinearLayout>
+
+    <!-- Açıklama -->
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The view from the top was breathtaking! I could see the entire city of Paris. Worth every step of the climb!"
+        android:textColor="@color/textPrimary"
+        android:textSize="14sp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="4dp" />
+
+    <!-- Alt bilgi -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14:30"
+            android:textColor="@color/textSecondary"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/ivWeather"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_weather_sun"
+            android:contentDescription="@string/weather"
+            android:layout_marginStart="8dp" />
+
+        <ImageView
+            android:id="@+id/ivMood"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_mood_happy"
+            android:contentDescription="@string/mood"
+            android:layout_marginStart="4dp" />
+
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="@string/like"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+</LinearLayout>
