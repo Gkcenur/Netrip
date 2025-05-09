@@ -45,6 +45,9 @@
         <!-- Add Profile Activity -->
         <activity android:name=".ProfileActivity" />
 
+        <!-- Add Travel Diary Activity -->
+        <activity android:name=".TravelDiaryActivity" />
+
     </application>
 
 </manifest>

@@ -84,4 +84,6 @@
     <string name="language">Language</string>
     <string name="currency">Currency</string>
     <string name="preferences">Preferences</string>
+    <string name="search">Search</string>
+    <string name="like">Like</string>
 </resources>

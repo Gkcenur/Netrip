@@ -30,4 +30,8 @@
     <color name="progressBg">#E0E0E0</color>
     <color name="plusButton">#D9A88F</color>
     <color name="plusButtonBg">#F5C6B0</color>
+    <color name="diaryOrangeLight">#FFF8F4</color>
+    <color name="diaryOrangePhoto">#FFF3E6</color>
+    <color name="diaryGreenLight">#E6F4E6</color>
+    <color name="diaryYellow">#FFD700</color>
 </resources>
