@@ -42,4 +42,7 @@
     <color name="categoryFood">#F7B2B2</color>              <!-- Açık kırmızı/pembe -->
     <color name="categoryTransportation">#A3D7E7</color>     <!-- Açık mavi -->
     <color name="categoryActivities">#FFD700</color>         <!-- Sarı -->
+    <color name="emergencyRed">#FF6B6B</color>
+    <color name="emergencyGreen">#7BC47F</color>
+    <color name="emergencyOrange">#FFB86B</color>
 </resources>

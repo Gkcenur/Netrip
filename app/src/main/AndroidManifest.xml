@@ -54,6 +54,9 @@
         <!-- Add Budget Activity -->
         <activity android:name=".BudgetActivity" />
 
+        <!-- Add Emergency Info Activity -->
+        <activity android:name=".EmergencyInfoActivity" />
+
     </application>
 
 </manifest>

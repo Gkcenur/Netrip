@@ -93,4 +93,8 @@
     <string name="recent_expenses">Recent Expenses</string>
     <string name="spent">spent</string>
     <string name="remove">Remove</string>
+    <string name="emergency_info">Emergency Info</string>
+    <string name="emergency_numbers">Emergency Numbers</string>
+    <string name="important_locations">Important Locations</string>
+    <string name="key_phrases">Key Phrases</string>
 </resources>

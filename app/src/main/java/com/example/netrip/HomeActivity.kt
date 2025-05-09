@@ -30,5 +30,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, BudgetActivity::class.java)
             startActivity(intent)
         }
+        val emergencyButton = findViewById<LinearLayout>(R.id.quickAccessEmergency)
+        emergencyButton.setOnClickListener {
+            val intent = Intent(this, EmergencyInfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
