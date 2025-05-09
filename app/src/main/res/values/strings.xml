@@ -92,4 +92,5 @@
     <string name="expense_categories">Expense Categories</string>
     <string name="recent_expenses">Recent Expenses</string>
     <string name="spent">spent</string>
+    <string name="remove">Remove</string>
 </resources>

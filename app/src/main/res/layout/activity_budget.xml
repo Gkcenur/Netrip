@@ -218,19 +218,37 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Artı Butonu -->
-    <ImageView
-        android:id="@+id/btnAdd"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+    <!-- Artı ve Eksi Butonları -->
+    <LinearLayout
+        android:id="@+id/bottomButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_circle_orange"
-        android:src="@drawable/ic_add_circle"
-        android:contentDescription="@string/add"
-        android:tint="@color/plusButton"
-        android:elevation="4dp" />
+        android:layout_marginBottom="72dp">
+
+        <ImageView
+            android:id="@+id/btnRemove"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_circle_orange"
+            android:src="@drawable/ic_remove_circle"
+            android:contentDescription="@string/remove"
+            android:tint="@color/plusButton"
+            android:elevation="4dp" />
+
+        <ImageView
+            android:id="@+id/btnAdd"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_circle_orange"
+            android:src="@drawable/ic_add_circle"
+            android:contentDescription="@string/add"
+            android:tint="@color/plusButton"
+            android:elevation="4dp" />
+    </LinearLayout>
 
     <!-- Bottom Navigation -->
     <include

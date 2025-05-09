@@ -78,8 +78,14 @@ class BudgetActivity : AppCompatActivity() {
 
         // Artı butonu (yeni harcama ekle)
         val btnAdd = findViewById<ImageView>(R.id.btnAdd)
+        val btnRemove = findViewById<ImageView>(R.id.btnRemove)
+
         btnAdd.setOnClickListener {
-            // Yeni harcama ekleme ekranına geçiş yapılabilir
+            // Yeni harcama ekle
+        }
+
+        btnRemove.setOnClickListener {
+            // Harcama çıkar veya başka bir işlem
         }
     }
 }
