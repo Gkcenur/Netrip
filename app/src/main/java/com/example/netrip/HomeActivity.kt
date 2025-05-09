@@ -25,5 +25,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, TravelPlannerActivity::class.java)
             startActivity(intent)
         }
+        val budgetButton = findViewById<LinearLayout>(R.id.quickAccessBudget)
+        budgetButton.setOnClickListener {
+            val intent = Intent(this, BudgetActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

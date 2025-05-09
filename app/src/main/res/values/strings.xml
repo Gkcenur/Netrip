@@ -82,10 +82,14 @@
     <string name="personal_info">Personal Information</string>
     <string name="security">Security</string>
     <string name="language">Language</string>
-    <string name="currency">Currency</string>
+    <string name="currency">USD</string>
     <string name="preferences">Preferences</string>
     <string name="search">Search</string>
     <string name="like">Like</string>
     <string name="favorite">Favorite</string>
     <string name="next">Next</string>
+    <string name="for_days">for %1$d days</string>
+    <string name="expense_categories">Expense Categories</string>
+    <string name="recent_expenses">Recent Expenses</string>
+    <string name="spent">spent</string>
 </resources>

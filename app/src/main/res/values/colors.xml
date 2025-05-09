@@ -37,4 +37,9 @@
     <color name="green">#4CAF50</color>
     <color name="orange">#FF9800</color>
     <color name="heartRed">#FF6F61</color>
+    <!-- Kategori renkleri -->
+    <color name="categoryAccommodation">#A3C7A3</color>      <!-- Açık yeşil -->
+    <color name="categoryFood">#F7B2B2</color>              <!-- Açık kırmızı/pembe -->
+    <color name="categoryTransportation">#A3D7E7</color>     <!-- Açık mavi -->
+    <color name="categoryActivities">#FFD700</color>         <!-- Sarı -->
 </resources>
