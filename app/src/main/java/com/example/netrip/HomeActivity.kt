@@ -35,5 +35,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, EmergencyInfoActivity::class.java)
             startActivity(intent)
         }
+        val currencyConverterButton = findViewById<LinearLayout>(R.id.quickAccessCurrencyConverter)
+        currencyConverterButton.setOnClickListener {
+            val intent = Intent(this, CurrencyConverterActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
