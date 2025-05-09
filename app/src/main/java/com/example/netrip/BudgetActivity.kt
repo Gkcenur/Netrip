@@ -1,5 +1,6 @@
 package com.example.netrip
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -81,11 +82,13 @@ class BudgetActivity : AppCompatActivity() {
         val btnRemove = findViewById<ImageView>(R.id.btnRemove)
 
         btnAdd.setOnClickListener {
-            // Yeni harcama ekle
+            val intent = Intent(this, AddBudgetActivity::class.java)
+            startActivity(intent)
         }
 
         btnRemove.setOnClickListener {
-            // Harcama çıkar veya başka bir işlem
+            val intent = Intent(this, AddExpenseActivity::class.java)
+            startActivity(intent)
         }
     }
 }
