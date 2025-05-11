@@ -74,12 +74,14 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:src="@drawable/ic_profile"
+            android:background="@drawable/bg_circle_selected"
+            android:tint="@color/topBar"
             android:contentDescription="@string/profile" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profile"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/topBar"
             android:textSize="12sp" />
     </LinearLayout>
 

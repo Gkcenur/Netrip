@@ -1,8 +1,10 @@
 package com.example.netrip
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -74,6 +76,12 @@ class TravelPlannerActivity : AppCompatActivity() {
                 currentDay++
                 updateDateViews()
             }
+        }
+
+        val btnAdd = findViewById<ImageButton>(R.id.btnAdd)
+        btnAdd.setOnClickListener {
+            val intent = Intent(this, AddEventActivity::class.java)
+            startActivity(intent)
         }
     }
 }

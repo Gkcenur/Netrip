@@ -97,4 +97,9 @@
     <string name="emergency_numbers">Emergency Numbers</string>
     <string name="important_locations">Important Locations</string>
     <string name="key_phrases">Key Phrases</string>
+    <string name="passenger">Passenger</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="boarding_pass">Boarding Pass</string>
+    <string name="add_to_calendar">Add to Calendar</string>
+    <string name="confirmed">Confirmed</string>
 </resources>

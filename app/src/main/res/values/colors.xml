@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F8F9F8</color>
-    <color name="topBar">#D9E5C7</color>
+    <color name="topBar">#B7D1B7</color>
     <color name="saveButton">#A3C7A3</color>
     <color name="addCategoryButton">#F8F9F8</color>
     <color name="addCategoryText">#B7D2B7</color>
@@ -45,4 +45,7 @@
     <color name="emergencyRed">#FF6B6B</color>
     <color name="emergencyGreen">#7BC47F</color>
     <color name="emergencyOrange">#FFB86B</color>
+    <color name="editTextBg">#F8FAF6</color>
+    <color name="editTextStroke">#B7D1B7</color>
+    <color name="selectedBg">#B7D1B7</color>
 </resources>

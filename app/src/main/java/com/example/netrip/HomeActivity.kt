@@ -40,5 +40,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, CurrencyConverterActivity::class.java)
             startActivity(intent)
         }
+        val reservationButton = findViewById<LinearLayout>(R.id.quickAccessReservation)
+        reservationButton.setOnClickListener {
+            val intent = Intent(this, ReservationDetailsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

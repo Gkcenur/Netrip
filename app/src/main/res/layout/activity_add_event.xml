@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#F8FAF6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#B7D1B7"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:src="@drawable/ic_back"
+            android:background="@android:color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:text="Add Event"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Paris, France"
+                android:textSize="14sp"
+                android:textColor="#E6F2E6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:text="Save"
+            android:backgroundTint="#D6EAD6"
+            android:textColor="#fff"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Event Title -->
+    <TextView
+        android:text="Event Title"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:hint="Louvre Museum Visit"
+        android:background="@drawable/rounded_edittext"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <!-- Date and Time -->
+    <TextView
+        android:text="Date and Time"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnDate"
+            android:text="May 18, 2025"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext" />
+
+        <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnTime"
+            android:text="14:00 - 17:00"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext" />
+    </LinearLayout>
+
+    <!-- Time Period -->
+    <TextView
+        android:text="Time Period"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnMorning"
+            android:text="Morning"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext" />
+
+        <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnAfternoon"
+            android:text="Afternoon"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_selected" />
+
+        <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnEvening"
+            android:text="Evening"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext" />
+    </LinearLayout>
+
+    <!-- Location -->
+    <TextView
+        android:text="Location"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:hint="Rue de Rivoli, 75001 Paris"
+            android:background="@drawable/rounded_edittext"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+
+        <ImageButton
+            android:id="@+id/btnMap"
+            android:src="@drawable/ic_location"
+            android:background="@android:color/transparent"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <!-- Notes -->
+    <TextView
+        android:text="Notes"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/etNotes"
+        android:hint="Skip-the-line tickets booked. Meet at main entrance."
+        android:background="@drawable/rounded_edittext"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="top"
+        android:inputType="textMultiLine" />
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center">
+
+        <ImageButton android:src="@drawable/ic_home" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+        <ImageButton android:src="@drawable/ic_calendar" android:background="@drawable/rounded_selected" android:tint="#B7D1B7" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+        <ImageButton android:src="@drawable/ic_stats" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+        <ImageButton android:src="@drawable/ic_profile" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout> 
