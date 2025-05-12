@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class DiaryEntryAdapter(private val items: List<DiaryEntry>) :
+class DiaryEntryAdapter(
+    private val items: List<DiaryEntry>,
+    private val onDeleteClick: (DiaryEntry) -> Unit
+) :
     RecyclerView.Adapter<DiaryEntryAdapter.DiaryEntryViewHolder>() {
 
     class DiaryEntryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -14,6 +17,7 @@ class DiaryEntryAdapter(private val items: List<DiaryEntry>) :
         val tvDate: TextView = view.findViewById(R.id.tvDate)
         val tvDescription: TextView = view.findViewById(R.id.tvDescription)
         val tvTime: TextView = view.findViewById(R.id.tvTime)
+        val ivDelete: android.widget.ImageView = view.findViewById(R.id.ivDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryEntryViewHolder {
@@ -28,6 +32,9 @@ class DiaryEntryAdapter(private val items: List<DiaryEntry>) :
         holder.tvDate.text = item.date
         holder.tvDescription.text = item.notes
         holder.tvTime.text = item.time
+        holder.ivDelete.setOnClickListener {
+            onDeleteClick(item)
+        }
     }
 
     override fun getItemCount() = items.size

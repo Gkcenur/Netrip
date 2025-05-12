@@ -44,6 +44,15 @@
             android:text="May 18, 2025"
             android:textColor="@color/textSecondary"
             android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_remove_circle"
+            android:contentDescription="@string/remove"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 
     <!-- Fotoğraf alanı (kart gövdesinin içinde, başlık rengine uygun) -->
