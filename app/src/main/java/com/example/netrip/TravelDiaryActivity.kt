@@ -7,8 +7,14 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class TravelDiaryActivity : AppCompatActivity() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var diaryAdapter: DiaryEntryAdapter
+    private val diaryList = mutableListOf<DiaryEntry>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_travel_diary)
@@ -18,33 +24,31 @@ class TravelDiaryActivity : AppCompatActivity() {
             startActivity(Intent(this, AddDiaryActivity::class.java))
         }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rvDiaryEntries)
+        recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = DiaryEntryAdapter(
-            listOf(
-                DiaryEntry(
-                    place = "Eiffel Tower",
-                    date = "May 18, 2025",
-                    description = "The view from the top was breathtaking! I could see the entire city of Paris. Worth every step of the climb!",
-                    time = "14:30",
-                    weatherRes = R.drawable.ic_weather_sun,
-                    moodRes = R.drawable.ic_mood_happy,
-                    likeRes = R.drawable.ic_heart,
-                    photoBgRes = R.drawable.bg_diary_photo_orange,
-                    headerBgRes = R.drawable.bg_diary_card_header_orange
-                ),
-                DiaryEntry(
-                    place = "Louvre Museum",
-                    date = "May 17, 2025",
-                    description = "Finally saw the Mona Lisa! It was smaller than I expected but still amazing to see in person.",
-                    time = "10:00",
-                    weatherRes = R.drawable.ic_weather_sun,
-                    moodRes = R.drawable.ic_mood_happy,
-                    likeRes = R.drawable.ic_heart,
-                    photoBgRes = R.drawable.bg_diary_photo_green,
-                    headerBgRes = R.drawable.bg_diary_card_header_green
-                )
-            )
-        )
+        diaryAdapter = DiaryEntryAdapter(diaryList)
+        recyclerView.adapter = diaryAdapter
+
+        fetchDiaryEntries()
+    }
+
+    private fun fetchDiaryEntries() {
+        val firestore = FirebaseFirestore.getInstance()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+        firestore.collection("diaryEntries")
+            .whereEqualTo("userId", userId)
+            .get()
+            .addOnSuccessListener { result ->
+                diaryList.clear()
+                for (document in result) {
+                    val entry = document.toObject(DiaryEntry::class.java)
+                    diaryList.add(entry)
+                }
+                diaryAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                // Hata mesajı göster
+            }
     }
 }

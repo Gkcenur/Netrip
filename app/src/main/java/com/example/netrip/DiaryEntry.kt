@@ -1,13 +1,14 @@
 package com.example.netrip
 
 data class DiaryEntry(
-    val place: String,
-    val date: String,
-    val description: String,
-    val time: String,
-    val weatherRes: Int,
-    val moodRes: Int,
-    val likeRes: Int,
-    val photoBgRes: Int,
-    val headerBgRes: Int
+    val userId: String = "",
+    val title: String = "",
+    val location: String = "",
+    val date: String = "",
+    val time: String = "",
+    val notes: String = "",
+    val mood: String = "",
+    val weather: String = "",
+    val tripId: String = "",
+    val photoUrls: List<String> = emptyList()
 )

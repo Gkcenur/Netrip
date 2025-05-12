@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.app.AlertDialog
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AddDiaryActivity : AppCompatActivity() {
     private lateinit var btnBack: ImageButton
@@ -24,6 +26,8 @@ class AddDiaryActivity : AppCompatActivity() {
     private lateinit var tvMoodText: TextView
     private lateinit var layoutPlaces: LinearLayout
     private lateinit var btnAddPlace: ImageButton
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +48,9 @@ class AddDiaryActivity : AppCompatActivity() {
         tvMoodText = findViewById(R.id.tvMoodText)
         layoutPlaces = findViewById(R.id.layoutPlaces)
         btnAddPlace = findViewById(R.id.btnAddPlace)
+
+        firestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
 
         btnBack.setOnClickListener { finish() }
         btnSave.setOnClickListener { saveDiaryEntry() }
@@ -96,8 +103,48 @@ class AddDiaryActivity : AppCompatActivity() {
     }
 
     private fun saveDiaryEntry() {
-        // Use selectedWeather as needed
-        // TODO: Gather all data and save the diary entry
+        val userId = auth.currentUser?.uid
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val title = etTitle.text.toString().trim()
+        val location = getAllPlaces().joinToString(", ")
+        val date = etDate.text.toString().trim()
+        val time = etTime.text.toString().trim()
+        val notes = etNotes.text.toString().trim()
+        val mood = tvMoodText.text.toString().trim()
+        val weather = tvWeatherIcon.text.toString().trim()
+        val tripId = "tripId" // Eğer bir tripId varsa buraya ekle, yoksa "" bırakabilirsin
+
+        if (title.isEmpty() || location.isEmpty() || date.isEmpty() || time.isEmpty()) {
+            Toast.makeText(this, "Please fill all required fields.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val diaryEntry = hashMapOf(
+            "userId" to userId,
+            "title" to title,
+            "location" to location,
+            "date" to date,
+            "time" to time,
+            "notes" to notes,
+            "mood" to mood,
+            "weather" to weather,
+            "tripId" to tripId,
+            "photoUrls" to listOf<String>()
+        )
+
+        firestore.collection("diaryEntries")
+            .add(diaryEntry)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Memory saved!", Toast.LENGTH_SHORT).show()
+                finish() // Kapat, Travel Diary ekranına dön
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun getAllPlaces(): List<String> {
