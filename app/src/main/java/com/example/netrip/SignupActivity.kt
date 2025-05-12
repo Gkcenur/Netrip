@@ -5,22 +5,30 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : AppCompatActivity() {
     private var isPasswordVisible = false
     private var isConfirmPasswordVisible = false
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+        auth = FirebaseAuth.getInstance()
+
         val ivBack = findViewById<ImageView>(R.id.ivBack)
         ivBack.setOnClickListener { finish() }
 
+        val etFullName = findViewById<EditText>(R.id.etFullName)
+        val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val etConfirmPassword = findViewById<EditText>(R.id.etConfirmPassword)
         val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
         val ivToggleConfirmPassword = findViewById<ImageView>(R.id.ivToggleConfirmPassword)
+        val cbTerms = findViewById<CheckBox>(R.id.cbTerms)
+        val btnSignUp = findViewById<Button>(R.id.btnSignUp)
 
         ivTogglePassword.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
@@ -40,15 +48,12 @@ class SignupActivity : AppCompatActivity() {
             etConfirmPassword.setSelection(etConfirmPassword.text.length)
         }
 
-        val btnSignUp = findViewById<Button>(R.id.btnSignUp)
         btnSignUp.setOnClickListener {
-            val email = findViewById<EditText>(R.id.etEmail).text.toString().trim()
-            val password = findViewById<EditText>(R.id.etPassword).text.toString()
-            val confirmPassword = findViewById<EditText>(R.id.etConfirmPassword).text.toString()
-            val fullName = findViewById<EditText>(R.id.etFullName).text.toString().trim()
-            val cbTerms = findViewById<CheckBox>(R.id.cbTerms)
+            val fullName = etFullName.text.toString().trim()
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString()
+            val confirmPassword = etConfirmPassword.text.toString()
 
-            // Email validation
             val emailPattern = android.util.Patterns.EMAIL_ADDRESS
             if (fullName.isEmpty()) {
                 Toast.makeText(this, "Please enter your full name.", Toast.LENGTH_SHORT).show()
@@ -58,7 +63,6 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            // Password validation
             if (password.length < 8) {
                 Toast.makeText(this, "Password must be at least 8 characters.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -72,11 +76,19 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // If all validations pass, proceed
-            Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            // Firebase Authentication ile kullanıcı oluştur
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
+                        // Kayıt başarılıysa login ekranına yönlendir
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Signup failed: ${task.exception?.localizedMessage}", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
         val tvLogin = findViewById<TextView>(R.id.tvLogin)

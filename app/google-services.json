@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "893016829748",
+    "project_id": "netrip-22a50",
+    "storage_bucket": "netrip-22a50.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893016829748:android:c3b94983735d56050aff61",
+        "android_client_info": {
+          "package_name": "com.example.netrip"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM6gFwTnCevIEChzFRvrEMSoHfb7PrT-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
