@@ -26,11 +26,19 @@ class TravelDiaryActivity : AppCompatActivity() {
         }
 
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this).apply {
+            stackFromEnd = false
+            reverseLayout = false
+        }
         diaryAdapter = DiaryEntryAdapter(diaryList) { diaryEntry ->
             deleteDiaryEntry(diaryEntry)
         }
         recyclerView.adapter = diaryAdapter
+        
+        // Scroll to top when the activity starts
+        recyclerView.post {
+            recyclerView.smoothScrollToPosition(0)
+        }
 
         val etSearch = findViewById<android.widget.EditText>(R.id.etSearch)
         etSearch.addTextChangedListener(object : android.text.TextWatcher {
@@ -38,15 +46,16 @@ class TravelDiaryActivity : AppCompatActivity() {
                 val query = s.toString().trim().lowercase()
                 diaryList.clear()
                 if (query.isEmpty()) {
-                    diaryList.addAll(allDiaryList)
+                    diaryList.addAll(allDiaryList.reversed())
                 } else {
                     diaryList.addAll(allDiaryList.filter {
                         it.title.lowercase().contains(query) ||
                         it.location.lowercase().contains(query) ||
                         it.notes.lowercase().contains(query)
-                    })
+                    }.reversed())
                 }
                 diaryAdapter.notifyDataSetChanged()
+                recyclerView.scrollToPosition(0)
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -70,6 +79,9 @@ class TravelDiaryActivity : AppCompatActivity() {
                     diaryList.add(entry)
                     allDiaryList.add(entry)
                 }
+                // Listeyi ters çevir
+                diaryList.reverse()
+                allDiaryList.reverse()
                 diaryAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { e ->
@@ -80,8 +92,6 @@ class TravelDiaryActivity : AppCompatActivity() {
     private fun deleteDiaryEntry(diaryEntry: DiaryEntry) {
         val firestore = FirebaseFirestore.getInstance()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
-        // Günlükleri benzersiz tanımlamak için bir id alanı olması gerekir. Eğer yoksa, Firestore'dan silmek için ek bilgi gerekir.
-        // Burada örnek olarak title, date, time ve userId ile siliyoruz. Eğer benzersiz bir id varsa onunla silmek daha doğru olur.
         firestore.collection("diaryEntries")
             .whereEqualTo("userId", userId)
             .whereEqualTo("title", diaryEntry.title)
