@@ -47,15 +47,52 @@
                 android:textColor="@android:color/white" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnDay"
+        <!-- Sağ: Profil butonu -->
+        <FrameLayout
+            android:id="@+id/profileContainer"
             android:layout_width="48dp"
-            android:layout_height="36dp"
-            android:background="@drawable/bg_circle_trans_white"
-            android:text="Day"
-            android:textColor="@color/textSecondary"
-            android:textSize="14sp"
-            android:layout_gravity="center_vertical"/>
+            android:layout_height="48dp"
+            android:background="@drawable/bg_profile_circle"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="8dp">
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_profile"
+                android:contentDescription="Profile" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Arama Kutusu -->
+    <LinearLayout
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/topBar"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_profile_card">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/search" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Search plans..."
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textSecondary"
+            android:paddingStart="8dp"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <!-- Tarih ve gün seçici -->
@@ -63,7 +100,7 @@
         android:id="@+id/dateBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/topBar"
+        android:layout_below="@id/searchBar"
         android:orientation="vertical"
         android:background="@android:color/transparent"
         android:paddingTop="8dp"
@@ -140,16 +177,27 @@
     </LinearLayout>
 
     <!-- Plan Kartları Listesi -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPlannerEntries"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/dateBar"
-        android:layout_above="@id/btnAdd"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp" />
+        android:layout_above="@id/bottomNav"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarThumbVertical="@drawable/custom_scrollbar"
+        android:scrollbarSize="8dp"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPlannerEntries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
+    </ScrollView>
 
     <!-- Bottom Navigation: EN ALTA sabitlenir -->
     <include

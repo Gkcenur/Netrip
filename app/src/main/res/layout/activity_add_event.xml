@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:background="#F8FAF6"
     android:layout_width="match_parent"
@@ -7,6 +7,7 @@
 
     <!-- Header -->
     <LinearLayout
+        android:id="@+id/header"
         android:orientation="horizontal"
         android:background="#B7D1B7"
         android:padding="16dp"
@@ -16,10 +17,12 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:src="@drawable/ic_back"
-            android:background="@android:color/transparent"
             android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_trans_white"
+            android:src="@drawable/ic_back_planner"
+            android:contentDescription="@string/back"
+            android:padding="8dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -54,159 +57,184 @@
             android:layout_marginStart="8dp" />
     </LinearLayout>
 
-    <!-- Event Title -->
-    <TextView
-        android:text="Event Title"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/etTitle"
-        android:hint="Louvre Museum Visit"
-        android:background="@drawable/rounded_edittext"
-        android:layout_margin="16dp"
+    <!-- ScrollView for content -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_above="@id/bottomNav"
+        android:fillViewport="true">
 
-    <!-- Date and Time -->
-    <TextView
-        android:text="Date and Time"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <!-- Event Title -->
+            <TextView
+                android:text="Event Title"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnDate"
-            android:text="May 18, 2025"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext" />
+            <EditText
+                android:id="@+id/etTitle"
+                android:hint="Louvre Museum Visit"
+                android:background="@drawable/rounded_edittext"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
-        <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+            <!-- Date and Time -->
+            <TextView
+                android:text="Date and Time"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnTime"
-            android:text="14:00 - 17:00"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext" />
-    </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <!-- Time Period -->
-    <TextView
-        android:text="Time Period"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/btnDate"
+                    android:text="May 18, 2025"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_edittext" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/btnMorning"
-            android:text="Morning"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext" />
+                <Button
+                    android:id="@+id/btnTime"
+                    android:text="14:00 - 17:00"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_edittext" />
+            </LinearLayout>
 
-        <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+            <!-- Time Period -->
+            <TextView
+                android:text="Time Period"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnAfternoon"
-            android:text="Afternoon"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_selected" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/btnMorning"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="Morning"
+                    android:textColor="@color/button_text_color"
+                    android:background="@drawable/button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="12dp"/>
 
-        <Button
-            android:id="@+id/btnEvening"
-            android:text="Evening"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/btnAfternoon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Afternoon"
+                    android:textColor="@color/button_text_color"
+                    android:background="@drawable/button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="12dp"/>
 
-    <!-- Location -->
-    <TextView
-        android:text="Location"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/btnEvening"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:text="Evening"
+                    android:textColor="@color/button_text_color"
+                    android:background="@drawable/button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="12dp"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <!-- Location -->
+            <TextView
+                android:text="Location"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/etLocation"
-            android:hint="Rue de Rivoli, 75001 Paris"
-            android:background="@drawable/rounded_edittext"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/btnMap"
-            android:src="@drawable/ic_location"
-            android:background="@android:color/transparent"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/etLocation"
+                    android:hint="Rue de Rivoli, 75001 Paris"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp" />
 
-    <!-- Notes -->
-    <TextView
-        android:text="Notes"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                <ImageButton
+                    android:id="@+id/btnMap"
+                    android:src="@drawable/ic_location"
+                    android:background="@android:color/transparent"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+            </LinearLayout>
 
-    <EditText
-        android:id="@+id/etNotes"
-        android:hint="Skip-the-line tickets booked. Meet at main entrance."
-        android:background="@drawable/rounded_edittext"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="top"
-        android:inputType="textMultiLine" />
+            <!-- Notes -->
+            <TextView
+                android:text="Notes"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/etNotes"
+                android:hint="Skip-the-line tickets booked. Meet at main entrance."
+                android:background="@drawable/rounded_edittext"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Bottom Navigation -->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:background="#fff"
-        android:layout_gravity="bottom"
+    <include
+        android:id="@+id/bottomNav"
+        layout="@layout/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
-        <ImageButton android:src="@drawable/ic_home" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
-        <ImageButton android:src="@drawable/ic_calendar" android:background="@drawable/rounded_selected" android:tint="#B7D1B7" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
-        <ImageButton android:src="@drawable/ic_stats" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
-        <ImageButton android:src="@drawable/ic_profile" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
-    </LinearLayout>
-</LinearLayout> 
+</RelativeLayout> 

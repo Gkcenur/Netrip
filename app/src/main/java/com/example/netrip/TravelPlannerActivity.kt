@@ -1,5 +1,6 @@
 package com.example.netrip
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
+import android.text.Editable
 
 class TravelPlannerActivity : AppCompatActivity() {
     private val tripStart = Calendar.getInstance().apply { set(2025, 4, 15) } // May 15, 2025
@@ -24,20 +26,12 @@ class TravelPlannerActivity : AppCompatActivity() {
         val rvPlannerEntries = findViewById<RecyclerView>(R.id.rvPlannerEntries)
         rvPlannerEntries.layoutManager = LinearLayoutManager(this)
 
-        val sections = listOf(
+        val sections = List(20) {
             PlannerSection(
-                "Morning", "9:00 AM - 12:00 PM", "Eiffel Tower Visit",
-                "Champ de Mars, 5 Av. Anatole France", null, R.color.orange
-            ),
-            PlannerSection(
-                "Afternoon", "2:00 PM - 5:00 PM", "Louvre Museum",
-                "Rue de Rivoli, 75001 Paris", "Note: Skip-the-line tickets booked", R.color.green
-            ),
-            PlannerSection(
-                "Evening", "8:00 PM - 10:00 PM", "Dinner at Le Jules Verne",
-                "Eiffel Tower, 2nd Floor", null, R.color.orange
+                "Section $it", "9:00 AM - 12:00 PM", "Activity $it",
+                "Address $it", null, R.color.orange
             )
-        )
+        }
         rvPlannerEntries.adapter = PlannerSectionAdapter(sections)
 
         val btnBack = findViewById<ImageView>(R.id.btnBack)
@@ -64,6 +58,37 @@ class TravelPlannerActivity : AppCompatActivity() {
 
         updateDateViews()
 
+        // Add calendar popup when clicking on the date
+        tvDate.setOnClickListener {
+            val cal = tripStart.clone() as Calendar
+            cal.add(Calendar.DAY_OF_MONTH, currentDay - 1)
+            
+            DatePickerDialog(
+                this,
+                { _, year, month, dayOfMonth ->
+                    val selectedDate = Calendar.getInstance().apply {
+                        set(year, month, dayOfMonth)
+                    }
+                    
+                    // Check if selected date is within trip range
+                    if (selectedDate.timeInMillis >= tripStart.timeInMillis && 
+                        selectedDate.timeInMillis <= tripEnd.timeInMillis) {
+                        // Calculate the day number based on the selected date
+                        val diffInMillis = selectedDate.timeInMillis - tripStart.timeInMillis
+                        val diffInDays = (diffInMillis / (24 * 60 * 60 * 1000)).toInt() + 1
+                        currentDay = diffInDays
+                        updateDateViews()
+                        
+                        // Scroll to the selected day's events
+                        rvPlannerEntries.smoothScrollToPosition(0)
+                    }
+                },
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
         btnPrevDay.setOnClickListener {
             if (currentDay > 1) {
                 currentDay--
@@ -83,5 +108,33 @@ class TravelPlannerActivity : AppCompatActivity() {
             val intent = Intent(this, AddEventActivity::class.java)
             startActivity(intent)
         }
+
+        // Profil butonuna tıklama
+        val ivProfile = findViewById<ImageView>(R.id.ivProfile)
+        ivProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        val etSearch = findViewById<android.widget.EditText>(R.id.etSearch)
+        // Orijinal listeyi sakla
+        var filteredSections = sections.toList()
+        etSearch.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString().trim().lowercase()
+                filteredSections = if (query.isEmpty()) {
+                    sections
+                } else {
+                    sections.filter {
+                        it.title.lowercase().contains(query) ||
+                        it.address.lowercase().contains(query) ||
+                        (it.note?.lowercase()?.contains(query) ?: false)
+                    }
+                }
+                rvPlannerEntries.adapter = PlannerSectionAdapter(filteredSections)
+            }
+        })
     }
 }

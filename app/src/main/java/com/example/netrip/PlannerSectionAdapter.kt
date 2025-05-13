@@ -1,5 +1,6 @@
 package com.example.netrip
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,18 @@ class PlannerSectionAdapter(
         holder.tvTitle.text = section.title
         holder.tvAddress.text = section.address
         holder.tvNote.text = section.note ?: ""
+
+        // Kart tıklanınca AddEventActivity'ye git ve verileri ilet
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, AddEventActivity::class.java)
+            intent.putExtra("section", section.section)
+            intent.putExtra("time", section.time)
+            intent.putExtra("title", section.title)
+            intent.putExtra("address", section.address)
+            intent.putExtra("note", section.note)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = sections.size
