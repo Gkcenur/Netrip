@@ -61,6 +61,12 @@ class TravelDiaryActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
+        val ivProfile = findViewById<ImageView>(R.id.ivProfile)
+        ivProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         fetchDiaryEntries()
     }
 

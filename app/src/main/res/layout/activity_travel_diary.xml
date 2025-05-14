@@ -10,49 +10,60 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="@color/topBar"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_trans_white"
+            android:src="@drawable/ic_back_planner"
+            android:contentDescription="@string/back"
+            android:padding="8dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvDiaryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Travel Diary"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/tvDiaryPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paris, France"
+                android:textSize="14sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/profileContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_profile_circle"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="8dp">
 
             <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_circle_trans_white"
-                android:src="@drawable/ic_back_diary"
-                android:contentDescription="@string/back"
-                android:padding="8dp" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Travel Diary"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Paris, France"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/white" />
-            </LinearLayout>
-        </LinearLayout>
+                android:id="@+id/ivProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_profile"
+                android:contentDescription="Profile" />
+        </FrameLayout>
     </LinearLayout>
 
     <!-- Arama Kutusu -->
