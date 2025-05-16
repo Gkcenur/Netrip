@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -63,24 +64,35 @@ class ReservationsActivity : AppCompatActivity() {
         }
 
         // Navigation buttons
-        findViewById<ImageButton>(R.id.btnBack).setOnClickListener { finish() }
+        findViewById<ImageView>(R.id.btnBack).setOnClickListener { finish() }
         findViewById<ImageButton>(R.id.btnAddReservation).setOnClickListener {
             startActivity(Intent(this, AddReservationActivity::class.java))
         }
+        findViewById<ImageView>(R.id.ivProfile).setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
         // Search functionality
-        findViewById<EditText>(R.id.etSearch).addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val query = s.toString().lowercase()
-                adapter.updateList(allReservations.filter {
-                    it.title.lowercase().contains(query) ||
-                    it.subtitle.lowercase().contains(query) ||
-                    it.location.lowercase().contains(query)
-                })
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
+        val btnSearch = findViewById<ImageButton>(R.id.btnSearch)
+        btnSearch.setOnClickListener {
+            val editText = EditText(this)
+            editText.hint = "Search..."
+            editText.setSingleLine()
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Search Reservations")
+                .setView(editText)
+                .setPositiveButton("Search") { dialog, _ ->
+                    val query = editText.text.toString().lowercase()
+                    adapter.updateList(allReservations.filter {
+                        it.title.lowercase().contains(query) ||
+                        it.subtitle.lowercase().contains(query) ||
+                        it.location.lowercase().contains(query)
+                    })
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
     }
 
     private fun updateChipSelection(selectedIndex: Int) {

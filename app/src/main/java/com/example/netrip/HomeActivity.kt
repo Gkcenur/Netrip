@@ -45,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
         }
         val reservationButton = findViewById<LinearLayout>(R.id.quickAccessReservation)
         reservationButton.setOnClickListener {
-            val intent = Intent(this, ReservationDetailsActivity::class.java)
+            val intent = Intent(this, ReservationsActivity::class.java)
             startActivity(intent)
         }
     }

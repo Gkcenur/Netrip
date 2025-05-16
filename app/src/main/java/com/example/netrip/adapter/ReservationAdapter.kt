@@ -41,11 +41,18 @@ class ReservationAdapter(
         holder.tvLocation.text = item.location
         holder.tvStatus.text = item.status
 
-        // Renkli bar tipi
+        // Renkli bar tipi - yeni tasarıma uygun renkler
         when (item.type) {
-            ReservationType.FLIGHT, ReservationType.ACTIVITY -> holder.colorBar.setBackgroundResource(R.color.orange)
+            ReservationType.FLIGHT -> holder.colorBar.setBackgroundResource(R.color.orange)
             ReservationType.HOTEL -> holder.colorBar.setBackgroundResource(R.color.categoryAccommodation)
+            ReservationType.ACTIVITY -> holder.colorBar.setBackgroundResource(R.color.emergencyGreen)
         }
+
+        // Durum etiketi arka planı - yeni tasarıma uygun drawable
+        holder.tvStatus.background = holder.itemView.context.getDrawable(R.drawable.bg_confirmed_rounded)
+
+        // Kart arka planı - yeni tasarıma uygun drawable
+        holder.itemView.background = holder.itemView.context.getDrawable(R.drawable.bg_card_white_rounded_shadow)
 
         holder.itemView.setOnClickListener { onClick(item) }
         holder.btnAdd.setOnClickListener { /* ekleme işlemi */ }
