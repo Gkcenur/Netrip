@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/header"
             android:orientation="horizontal"
-            android:background="#B7D1B7"
+            android:background="@color/topBar"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,28 +29,15 @@
                 android:contentDescription="@string/back"
                 android:padding="8dp" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
+            <TextView
+                android:text="Add Reservation"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="#fff"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <TextView
-                    android:text="Add Reservation"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
-                    android:textColor="#fff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="Paris, France"
-                    android:textSize="14sp"
-                    android:textColor="#E6F2E6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/btnSave"
@@ -58,290 +45,528 @@
                 android:backgroundTint="#D6EAD6"
                 android:textColor="#fff"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp" />
+                android:layout_height="40dp" />
         </LinearLayout>
 
-        <!-- Reservation Type -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reservation Type"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp" />
-
+        <!-- Content Container -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:gravity="center_vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <ToggleButton
-                android:id="@+id/btnTypePlane"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:text="Plane\nFlight"
-                android:textOn="Plane\nFlight"
-                android:textOff="Plane\nFlight"
-                android:background="@drawable/bg_card"
-                android:textColor="@color/topBar"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
-
-            <ToggleButton
-                android:id="@+id/btnTypeHotel"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:text="Hotel"
-                android:textOn="Hotel"
-                android:textOff="Hotel"
-                android:background="@drawable/bg_card"
-                android:textColor="@color/topBar"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
-
-            <ToggleButton
-                android:id="@+id/btnTypeCar"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:text="Car\nTransport"
-                android:textOn="Car\nTransport"
-                android:textOff="Car\nTransport"
-                android:background="@drawable/bg_card"
-                android:textColor="@color/topBar"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
-
-            <ToggleButton
-                android:id="@+id/btnTypeTicket"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:text="Ticket\nActivity"
-                android:textOn="Ticket\nActivity"
-                android:textOff="Ticket\nActivity"
-                android:background="@drawable/bg_card"
-                android:textColor="@color/topBar"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!-- Flight Details -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Flight Details"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/etAirline"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_card"
-                android:hint="@string/airline"
-                android:focusable="false"
-                android:clickable="true"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:paddingStart="12dp"
-                android:paddingEnd="60dp"
-                android:gravity="center_vertical"/>
-
+            <!-- Reservation Type -->
             <TextView
-                android:id="@+id/tvSelectAirline"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/select"
-                android:textColor="@color/topBar"
-                android:textSize="16sp"
-                android:gravity="center_vertical|end"
-                android:paddingEnd="16dp"
-                android:layout_gravity="end|center_vertical"/>
-        </FrameLayout>
+                android:layout_height="wrap_content"
+                android:text="Reservation Type"
+                android:textStyle="bold"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/etFlightNumber"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/bg_card"
-            android:hint="e.g., AF1234"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:padding="12dp"
-            android:layout_marginTop="8dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
 
-        <!-- Departure and Arrival -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Departure and Arrival"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp" />
+                <ToggleButton
+                    android:id="@+id/btnTypePlane"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Plane\nFlight"
+                    android:textOn="Plane\nFlight"
+                    android:textOff="Plane\nFlight"
+                    android:background="@drawable/bg_card"
+                    android:textColor="@color/topBar"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+                <ToggleButton
+                    android:id="@+id/btnTypeHotel"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Hotel"
+                    android:textOn="Hotel"
+                    android:textOff="Hotel"
+                    android:background="@drawable/bg_card"
+                    android:textColor="@color/topBar"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp" />
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp">
+                <ToggleButton
+                    android:id="@+id/btnTypeTicket"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Ticket\nActivity"
+                    android:textOn="Ticket\nActivity"
+                    android:textOff="Ticket\nActivity"
+                    android:background="@drawable/bg_card"
+                    android:textColor="@color/topBar"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Flight Layout -->
+            <LinearLayout
+                android:id="@+id/flightLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flight Details"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/etAirline"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_card"
+                        android:hint="Airline"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="60dp"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/tvSelectAirline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Select"
+                        android:textColor="@color/topBar"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical|end"
+                        android:paddingEnd="16dp"
+                        android:layout_gravity="end|center_vertical"/>
+                </FrameLayout>
 
                 <EditText
-                    android:id="@+id/etFrom"
+                    android:id="@+id/etFlightNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
                     android:background="@drawable/bg_card"
-                    android:hint="@string/from"
+                    android:hint="Flight Number (e.g., AF1234)"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departure and Arrival"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp">
+
+                        <EditText
+                            android:id="@+id/etFrom"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_card"
+                            android:hint="From"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="60dp"
+                            android:gravity="center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/tvSelectFrom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Select"
+                            android:textColor="@color/topBar"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical|end"
+                            android:paddingEnd="16dp"
+                            android:layout_gravity="end|center_vertical"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etTo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_card"
+                            android:hint="To"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="60dp"
+                            android:gravity="center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/tvSelectTo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Select"
+                            android:textColor="@color/topBar"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical|end"
+                            android:paddingEnd="16dp"
+                            android:layout_gravity="end|center_vertical"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departure"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/etDepartureDate"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card"
+                        android:hint="Date"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <EditText
+                        android:id="@+id/etDepartureTime"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card"
+                        android:hint="Time"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="12dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arrival"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/etArrivalDate"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card"
+                        android:hint="Date"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <EditText
+                        android:id="@+id/etArrivalTime"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card"
+                        android:hint="Time"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Hotel Layout -->
+            <LinearLayout
+                android:id="@+id/hotelLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotel Details"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/etHotelName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_card"
+                        android:hint="Hotel Name"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="60dp"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/tvSelectHotel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Select"
+                        android:textColor="@color/topBar"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical|end"
+                        android:paddingEnd="16dp"
+                        android:layout_gravity="end|center_vertical"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/etRoomType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_card"
+                        android:hint="Room Type"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="60dp"
+                        android:gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/tvSelectRoomType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Select"
+                        android:textColor="@color/topBar"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical|end"
+                        android:paddingEnd="16dp"
+                        android:layout_gravity="end|center_vertical"/>
+                </FrameLayout>
+
+                <EditText
+                    android:id="@+id/etGuests"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_card"
+                    android:hint="Number of Guests"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check-in"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp" />
+
+                <EditText
+                    android:id="@+id/etCheckInDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_card"
+                    android:hint="Date"
                     android:focusable="false"
                     android:clickable="true"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="60dp"
-                    android:gravity="center_vertical"/>
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
 
                 <TextView
-                    android:id="@+id/tvSelectFrom"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/select"
-                    android:textColor="@color/topBar"
+                    android:layout_height="wrap_content"
+                    android:text="Check-out"
+                    android:textStyle="bold"
                     android:textSize="16sp"
-                    android:gravity="center_vertical|end"
-                    android:paddingEnd="16dp"
-                    android:layout_gravity="end|center_vertical"/>
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp">
+                    android:layout_marginTop="16dp" />
 
                 <EditText
-                    android:id="@+id/etTo"
+                    android:id="@+id/etCheckOutDate"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
                     android:background="@drawable/bg_card"
-                    android:hint="@string/to"
+                    android:hint="Date"
                     android:focusable="false"
                     android:clickable="true"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="60dp"
-                    android:gravity="center_vertical"/>
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Activity Layout -->
+            <LinearLayout
+                android:id="@+id/activityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:visibility="gone">
 
                 <TextView
-                    android:id="@+id/tvSelectTo"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/select"
-                    android:textColor="@color/topBar"
+                    android:layout_height="wrap_content"
+                    android:text="Activity Details"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etActivityName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_card"
+                    android:hint="Activity Name"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:gravity="center_vertical|end"
-                    android:paddingEnd="16dp"
-                    android:layout_gravity="end|center_vertical"/>
-            </FrameLayout>
-        </LinearLayout>
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
 
-        <!-- Departure Date and Time -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+                <EditText
+                    android:id="@+id/etLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_card"
+                    android:hint="Location"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
 
+                <EditText
+                    android:id="@+id/etTickets"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_card"
+                    android:hint="Number of Tickets"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date and Time"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/etActivityDate"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card"
+                        android:hint="Date"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <EditText
+                        android:id="@+id/etActivityTime"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_card"
+                        android:hint="Time"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Confirmation Number (Common for all types) -->
             <EditText
-                android:id="@+id/etDepartureDate"
-                android:layout_width="0dp"
+                android:id="@+id/etConfirmationNumber"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_weight="1"
                 android:background="@drawable/bg_card"
-                android:hint="Departure Date"
-                android:focusable="false"
-                android:clickable="true"
+                android:hint="Confirmation Number (Optional)"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:padding="12dp"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginTop="16dp" />
 
-            <EditText
-                android:id="@+id/etDepartureTime"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_card"
-                android:hint="Time"
-                android:focusable="false"
-                android:clickable="true"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:padding="12dp" />
         </LinearLayout>
-
-        <!-- Arrival Date and Time -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/etArrivalDate"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_card"
-                android:hint="Arrival Date"
-                android:focusable="false"
-                android:clickable="true"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:padding="12dp"
-                android:layout_marginEnd="8dp" />
-
-            <EditText
-                android:id="@+id/etArrivalTime"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_card"
-                android:hint="Time"
-                android:focusable="false"
-                android:clickable="true"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:padding="12dp" />
-        </LinearLayout>
-
-        <!-- Confirmation Number -->
-        <EditText
-            android:id="@+id/etConfirmationNumber"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/bg_card"
-            android:hint="Confirmation Number (Optional)"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:padding="12dp"
-            android:layout_marginTop="8dp" />
-
     </LinearLayout>
 </ScrollView>

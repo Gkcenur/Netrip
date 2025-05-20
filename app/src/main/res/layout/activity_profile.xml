@@ -7,21 +7,22 @@
 
     <!-- Üst Bar -->
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="@color/topBar"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp">
 
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_circle_trans_white"
-            android:src="@drawable/ic_back_profile_line"
-            android:contentDescription="@string/back"
+            android:src="@drawable/ic_back_planner"
+            android:contentDescription="Back"
             android:padding="8dp" />
 
         <LinearLayout
@@ -32,6 +33,7 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/tvProfileTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profile"
@@ -40,21 +42,33 @@
                 android:textColor="@android:color/white" />
 
             <TextView
+                android:id="@+id/tvProfilePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Account Settings"
+                android:text="Paris, France"
                 android:textSize="14sp"
                 android:textColor="@android:color/white" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/btnAdd"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_circle_trans_white"
-            android:src="@drawable/ic_add_profile_line"
-            android:contentDescription="@string/add"
-            android:padding="8dp" />
+        <!-- Sağ: Log Out butonu -->
+        <FrameLayout
+            android:id="@+id/logoutContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_profile_circle"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Log Out"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+        </FrameLayout>
     </LinearLayout>
 
     <!-- Profil Kartı -->
