@@ -4,354 +4,371 @@
     android:layout_height="match_parent"
     android:background="@color/bgMain">
 
-    <!-- Main Content Container -->
-    <LinearLayout
-        android:id="@+id/mainContent"
+    <!-- Main Content Container wrapped in NestedScrollView -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomNav"
-        android:orientation="vertical"
-        android:padding="0dp">
+        android:fillViewport="true">
 
-        <!-- Üst Bar -->
         <LinearLayout
+            android:id="@+id/mainContent"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@color/topBar"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
-
-            <!-- Sol: Logo ve karşılama -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NETRIP"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome back, Alex"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Sağ: Tarih ve profil -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <FrameLayout
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_profile_circle">
-
-                    <ImageView
-                        android:id="@+id/ivProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_profile"
-                        android:contentDescription="Profile" />
-
-                    <TextView
-                        android:id="@+id/tvProfileInitial"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="N"
-                        android:textSize="24sp"
-                        android:gravity="center"
-                        android:textColor="@color/green_light"/>
-                </FrameLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Aktif Seyahat Kartı -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/bg_home_card"
-            android:layout_margin="16dp"
-            android:padding="16dp"
-            android:elevation="2dp">
+            android:padding="0dp">
 
+            <!-- Üst Bar -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="72dp"
+                android:background="@color/topBar"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_travel_card"
-                    android:contentDescription="@string/travel" />
+                <!-- Sol: Logo ve karşılama -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NETRIP"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome back, Alex"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Sağ: Tarih ve profil -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_profile_circle">
+
+                        <ImageView
+                            android:id="@+id/ivProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_profile"
+                            android:contentDescription="Profile" />
+
+                        <TextView
+                            android:id="@+id/tvProfileInitial"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="N"
+                            android:textSize="24sp"
+                            android:gravity="center"
+                            android:textColor="@color/green_light"/>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Aktif Seyahat Kartı -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_home_card"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                android:elevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_travel_card"
+                        android:contentDescription="@string/travel" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Paris, France"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="14sp"
+                        android:layout_marginStart="8dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Paris, France"
                     android:textColor="@color/textPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="May 15 - May 25, 2025"
+                    android:textColor="@color/textSecondary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <ProgressBar
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:progress="50"
+                        android:max="100"
+                        android:progressTint="@color/progress"
+                        android:backgroundTint="@color/progressBg"
+                        style="?android:attr/progressBarStyleHorizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 days remaining"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
             </LinearLayout>
 
+            <!-- Quick Access -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Paris, France"
-                android:textColor="@color/textPrimary"
-                android:textSize="18sp"
+                android:text="Quick Access"
                 android:textStyle="bold"
-                android:layout_marginTop="12dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="May 15 - May 25, 2025"
-                android:textColor="@color/textSecondary"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp" />
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp">
 
-                <ProgressBar
-                    android:layout_width="0dp"
-                    android:layout_height="8dp"
-                    android:layout_weight="1"
-                    android:progress="50"
-                    android:max="100"
-                    android:progressTint="@color/progress"
-                    android:backgroundTint="@color/progressBg"
-                    style="?android:attr/progressBarStyleHorizontal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Row 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="5 days remaining"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="12sp"
-                    android:layout_marginStart="8dp" />
+                    android:orientation="horizontal">
+
+                    <!-- Travel Diary -->
+                    <LinearLayout
+                        android:id="@+id/quickAccessTravelDiary"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_home_card"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_diary"
+                            android:contentDescription="@string/diary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Travel Diary"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <!-- Reservations -->
+                    <LinearLayout
+                        android:id="@+id/quickAccessReservation"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_home_card"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_reservation"
+                            android:contentDescription="@string/reservations" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reservations"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Row 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Budget -->
+                    <LinearLayout
+                        android:id="@+id/quickAccessBudget"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_home_card"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_budget"
+                            android:contentDescription="@string/budget" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Budget"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <!-- Emergency -->
+                    <LinearLayout
+                        android:id="@+id/quickAccessEmergency"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_home_card"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_emergency"
+                            android:contentDescription="@string/emergency" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Emergency"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Row 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Travel Planner -->
+                    <LinearLayout
+                        android:id="@+id/quickAccessTravelPlanner"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_home_card"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_travel_card"
+                            android:contentDescription="@string/travel_planner" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Travel Planner"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <!-- Currency Converter -->
+                    <LinearLayout
+                        android:id="@+id/quickAccessCurrencyConverter"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_home_card"
+                        android:layout_margin="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_budget"
+                            android:contentDescription="@string/currency_converter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Currency Converter"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-        <!-- Quick Access -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quick Access"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary"
-            android:textSize="16sp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:alignmentMode="alignMargins"
-            android:rowOrderPreserved="false"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="16dp">
-
-            <!-- Travel Diary -->
-            <LinearLayout
-                android:id="@+id/quickAccessTravelDiary"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_home_card"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_diary"
-                    android:contentDescription="@string/diary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Travel Diary"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Reservations -->
-            <LinearLayout
-                android:id="@+id/quickAccessReservation"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_home_card"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_reservation"
-                    android:contentDescription="@string/reservations" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reservations"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Budget -->
-            <LinearLayout
-                android:id="@+id/quickAccessBudget"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_home_card"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_budget"
-                    android:contentDescription="@string/budget" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Budget"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Emergency -->
-            <LinearLayout
-                android:id="@+id/quickAccessEmergency"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_home_card"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_emergency"
-                    android:contentDescription="@string/emergency" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Emergency"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Travel Planner -->
-            <LinearLayout
-                android:id="@+id/quickAccessTravelPlanner"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_home_card"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_travel_card"
-                    android:contentDescription="@string/travel_planner" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Travel Planner"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Currency Converter -->
-            <LinearLayout
-                android:id="@+id/quickAccessCurrencyConverter"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/bg_home_card"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_budget"
-                    android:contentDescription="@string/currency_converter" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Currency Converter"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-        </GridLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <!-- Bottom Navigation -->
     <include
