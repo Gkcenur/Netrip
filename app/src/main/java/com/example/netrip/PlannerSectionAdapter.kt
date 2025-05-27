@@ -8,9 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PlannerSectionAdapter(
-    private val sections: List<PlannerSection>
-) : RecyclerView.Adapter<PlannerSectionAdapter.ViewHolder>() {
+class PlannerSectionAdapter(var sections: List<PlannerSection>) : RecyclerView.Adapter<PlannerSectionAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val sectionColor: View = view.findViewById(R.id.sectionColor)
@@ -52,4 +50,9 @@ class PlannerSectionAdapter(
     }
 
     override fun getItemCount() = sections.size
+
+    fun updateSections(newSections: List<PlannerSection>) {
+        sections = newSections
+        notifyDataSetChanged()
+    }
 }
