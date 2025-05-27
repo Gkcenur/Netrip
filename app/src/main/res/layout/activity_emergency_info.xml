@@ -42,17 +42,138 @@
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Paris, France"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
 
         <!-- Emergency Numbers Card -->
-        <include layout="@layout/card_emergency_numbers" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_red"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_dot_red"
+                    android:layout_marginEnd="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency Numbers"
+                    android:textColor="@color/emergencyRed"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <!-- 1. satır: USA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="USA (All Services)"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_circle_red"
+                    android:text="911"
+                    android:textColor="@color/emergencyRed"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <!-- 2. satır: Germany -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Germany (All Services)"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_circle_red"
+                    android:text="112"
+                    android:textColor="@color/emergencyRed"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <!-- 3. satır: UK -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="UK (All Services)"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_circle_red"
+                    android:text="999"
+                    android:textColor="@color/emergencyRed"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <!-- 4. satır: Fransa (örnek, istersen değiştirebilirsin) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="France (All Services)"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_circle_red"
+                    android:text="112"
+                    android:textColor="@color/emergencyRed"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </LinearLayout>
 
         <!-- Important Locations Card -->
         <include layout="@layout/card_important_locations" />

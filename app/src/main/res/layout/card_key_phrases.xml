@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/key_phrases"
+            android:text="Key Phrases"
             android:textStyle="bold"
             android:textColor="@color/emergencyOrange"
             android:textSize="16sp" />
@@ -33,7 +33,74 @@
         android:layout_height="8dp"
         android:background="@android:color/transparent" />
 
-    <!-- Key Phrases List -->
-    <include layout="@layout/item_key_phrase" />
-    <include layout="@layout/item_key_phrase" />
+    <!-- Key Phrases Table -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Help!"
+                android:textColor="@color/textPrimary"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Au secours!"
+                android:textColor="@color/textSecondary"
+                android:textSize="15sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hilfe!"
+                android:textColor="@color/textPrimary"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ayuda!"
+                android:textColor="@color/textSecondary"
+                android:textSize="15sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Yardım edin!"
+                android:textColor="@color/textPrimary"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="助けて!"
+                android:textColor="@color/textSecondary"
+                android:textSize="15sp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="救命!"
+                android:textColor="@color/textPrimary"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="À l'aide!"
+                android:textColor="@color/textSecondary"
+                android:textSize="15sp"/>
+        </TableRow>
+    </TableLayout>
 </LinearLayout>
