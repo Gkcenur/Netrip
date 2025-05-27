@@ -12,7 +12,8 @@ import com.example.netrip.model.ReservationType
 
 class ReservationAdapter(
     private var reservations: List<Reservation>,
-    private val onClick: (Reservation) -> Unit
+    private val onClick: (Reservation) -> Unit,
+    private val onEditClick: (Reservation) -> Unit
 ) : RecyclerView.Adapter<ReservationAdapter.ReservationViewHolder>() {
 
     class ReservationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -55,7 +56,9 @@ class ReservationAdapter(
         holder.itemView.background = holder.itemView.context.getDrawable(R.drawable.bg_card_white_rounded_shadow)
 
         holder.itemView.setOnClickListener { onClick(item) }
-        holder.btnAdd.setOnClickListener { /* ekleme işlemi */ }
+        holder.btnAdd.setOnClickListener {
+            onEditClick(reservations[position])
+        }
     }
 
     override fun getItemCount() = reservations.size

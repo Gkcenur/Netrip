@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- FLIGHT -->
+    <EditText
+        android:id="@+id/etAirline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Airline" />
+
+    <EditText
+        android:id="@+id/etFlightNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Flight Number" />
+
+    <EditText
+        android:id="@+id/etDeparture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Departure Location" />
+
+    <EditText
+        android:id="@+id/etArrival"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Arrival Location" />
+
+    <EditText
+        android:id="@+id/etDepartureDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Departure Date" />
+
+    <EditText
+        android:id="@+id/etArrivalDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Arrival Date" />
+
+    <!-- HOTEL -->
+    <EditText
+        android:id="@+id/etHotelName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hotel Name" />
+
+    <EditText
+        android:id="@+id/etRoomType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Room Type" />
+
+    <EditText
+        android:id="@+id/etGuests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Guests" />
+
+    <EditText
+        android:id="@+id/etCheckIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Check-in Date" />
+
+    <EditText
+        android:id="@+id/etCheckOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Check-out Date" />
+
+    <!-- ACTIVITY -->
+    <EditText
+        android:id="@+id/etActivityName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Activity Name" />
+
+    <EditText
+        android:id="@+id/etTickets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Tickets" />
+
+    <EditText
+        android:id="@+id/etActivityDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Activity Date" />
+
+    <EditText
+        android:id="@+id/etActivityTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Activity Time" />
+
+    <EditText
+        android:id="@+id/etActivityLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Activity Location" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+
+</LinearLayout>
+</ScrollView>

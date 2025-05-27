@@ -30,9 +30,15 @@ class ReservationsActivity : BaseActivity() {
         // ...
 
         val rvReservations = findViewById<RecyclerView>(R.id.rvReservations)
-        adapter = ReservationAdapter(listOf()) { reservation ->
-            // Tıklanınca yapılacaklar
-        }
+        adapter = ReservationAdapter(
+            listOf(),
+            onClick = { reservation -> /* tıklanınca yapılacaklar */ },
+            onEditClick = { reservation ->
+                val intent = Intent(this, EditReservationActivity::class.java)
+                intent.putExtra("reservationId", reservation.id)
+                startActivity(intent)
+            }
+        )
         rvReservations.layoutManager = LinearLayoutManager(this)
         rvReservations.adapter = adapter
 
@@ -198,5 +204,10 @@ class ReservationsActivity : BaseActivity() {
             else -> reservations
         }
         adapter.updateList(filtered)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchReservations() // Her ekrana dönüldüğünde verileri güncelle
     }
 }

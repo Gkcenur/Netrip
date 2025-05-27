@@ -42,12 +42,6 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Paris, France"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
             </LinearLayout>
 
             <FrameLayout
@@ -166,7 +160,6 @@
             android:id="@+id/tvPastTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Past (3)"
             android:textSize="18sp"
             android:textColor="#222"
             android:layout_marginStart="16dp"
