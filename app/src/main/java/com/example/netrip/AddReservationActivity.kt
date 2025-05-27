@@ -339,3 +339,8 @@ class AddReservationActivity : AppCompatActivity() {
         }
     }
 }
+
+data class Reservation(
+    val type: String = "",
+    val details: Map<String, Any> = emptyMap()
+)

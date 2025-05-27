@@ -37,7 +37,7 @@ class ReservationAdapter(
         holder.tvInitials.text = item.initials
         holder.tvTitle.text = item.title
         holder.tvSubtitle.text = item.subtitle
-        holder.tvDateInfo.text = item.dateInfo
+        holder.tvDateInfo.text = item.date
         holder.tvLocation.text = item.location
         holder.tvStatus.text = item.status
 
@@ -61,7 +61,7 @@ class ReservationAdapter(
     override fun getItemCount() = reservations.size
 
     fun updateList(newList: List<Reservation>) {
-        reservations = newList
+        this.reservations = newList
         notifyDataSetChanged()
     }
 }
