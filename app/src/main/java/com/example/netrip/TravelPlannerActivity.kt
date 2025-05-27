@@ -8,34 +8,32 @@ import android.widget.TextView
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import java.text.SimpleDateFormat
 import java.util.*
 import android.text.Editable
 
 class TravelPlannerActivity : BaseActivity() {
-    private val tripStart = Calendar.getInstance().apply { set(2025, 4, 15) } // May 15, 2025
-    private val tripEnd = Calendar.getInstance().apply { set(2025, 4, 25) }   // May 25, 2025
-    private var currentDay = 4 // Örnek: 4. gün
-    private val totalDays = 10
+    private var currentDate = Calendar.getInstance() // Seçili gün
+    private lateinit var db: FirebaseFirestore
+    private lateinit var adapter: PlannerSectionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupUI()
+        loadEvents()
     }
 
     override fun getLayoutId(): Int = R.layout.activity_travel_planner
 
     private fun setupUI() {
+        db = FirebaseFirestore.getInstance()
+        
         val rvPlannerEntries = findViewById<RecyclerView>(R.id.rvPlannerEntries)
         rvPlannerEntries.layoutManager = LinearLayoutManager(this)
-
-        val sections = List(20) {
-            PlannerSection(
-                "Section $it", "9:00 AM - 12:00 PM", "Activity $it",
-                "Address $it", null, R.color.orange
-            )
-        }
-        rvPlannerEntries.adapter = PlannerSectionAdapter(sections)
+        adapter = PlannerSectionAdapter(emptyList())
+        rvPlannerEntries.adapter = adapter
 
         val btnBack = findViewById<ImageView>(R.id.btnBack)
         btnBack.setOnClickListener {
@@ -48,62 +46,39 @@ class TravelPlannerActivity : BaseActivity() {
         val btnPrevDay = findViewById<ImageView>(R.id.btnPrevDay)
         val btnNextDay = findViewById<ImageView>(R.id.btnNextDay)
 
-        // Başlangıç tarihi + currentDay-1 kadar gün ekle
         fun updateDateViews() {
-            val cal = tripStart.clone() as Calendar
-            cal.add(Calendar.DAY_OF_MONTH, currentDay - 1)
             val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
             val dayNameFormat = SimpleDateFormat("EEEE", Locale.getDefault())
-            tvDate.text = dateFormat.format(cal.time)
-            tvDayName.text = dayNameFormat.format(cal.time)
-            tvDayCount.text = "Day $currentDay of $totalDays"
+            tvDate.text = dateFormat.format(currentDate.time)
+            tvDayName.text = dayNameFormat.format(currentDate.time)
+            tvDayCount.text = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(currentDate.time)
+            loadEvents()
         }
 
         updateDateViews()
 
-        // Add calendar popup when clicking on the date
         tvDate.setOnClickListener {
-            val cal = tripStart.clone() as Calendar
-            cal.add(Calendar.DAY_OF_MONTH, currentDay - 1)
-            
             DatePickerDialog(
                 this,
                 { _, year, month, dayOfMonth ->
-                    val selectedDate = Calendar.getInstance().apply {
-                        set(year, month, dayOfMonth)
-                    }
-                    
-                    // Check if selected date is within trip range
-                    if (selectedDate.timeInMillis >= tripStart.timeInMillis && 
-                        selectedDate.timeInMillis <= tripEnd.timeInMillis) {
-                        // Calculate the day number based on the selected date
-                        val diffInMillis = selectedDate.timeInMillis - tripStart.timeInMillis
-                        val diffInDays = (diffInMillis / (24 * 60 * 60 * 1000)).toInt() + 1
-                        currentDay = diffInDays
-                        updateDateViews()
-                        
-                        // Scroll to the selected day's events
-                        rvPlannerEntries.smoothScrollToPosition(0)
-                    }
+                    currentDate.set(year, month, dayOfMonth)
+                    updateDateViews()
+                    rvPlannerEntries.smoothScrollToPosition(0)
                 },
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
+                currentDate.get(Calendar.YEAR),
+                currentDate.get(Calendar.MONTH),
+                currentDate.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
 
         btnPrevDay.setOnClickListener {
-            if (currentDay > 1) {
-                currentDay--
-                updateDateViews()
-            }
+            currentDate.add(Calendar.DAY_OF_MONTH, -1)
+            updateDateViews()
         }
 
         btnNextDay.setOnClickListener {
-            if (currentDay < totalDays) {
-                currentDay++
-                updateDateViews()
-            }
+            currentDate.add(Calendar.DAY_OF_MONTH, 1)
+            updateDateViews()
         }
 
         // Profil butonuna tıklama
@@ -114,24 +89,76 @@ class TravelPlannerActivity : BaseActivity() {
         }
 
         val etSearch = findViewById<android.widget.EditText>(R.id.etSearch)
-        // Orijinal listeyi sakla
-        var filteredSections = sections.toList()
+        var filteredSections = emptyList<PlannerSection>()
         etSearch.addTextChangedListener(object : android.text.TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 val query = s.toString().trim().lowercase()
                 filteredSections = if (query.isEmpty()) {
-                    sections
+                    emptyList()
                 } else {
-                    sections.filter {
+                    adapter.sections.filter {
                         it.title.lowercase().contains(query) ||
                         it.address.lowercase().contains(query) ||
                         (it.note?.lowercase()?.contains(query) ?: false)
                     }
                 }
-                rvPlannerEntries.adapter = PlannerSectionAdapter(filteredSections)
+                adapter.updateSections(filteredSections)
             }
         })
+
+        val btnAdd = findViewById<ImageButton>(R.id.btnAdd)
+        btnAdd.setOnClickListener {
+            val intent = Intent(this, AddEventActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun loadEvents() {
+        val startOfDay = currentDate.clone() as Calendar
+        startOfDay.set(Calendar.HOUR_OF_DAY, 0)
+        startOfDay.set(Calendar.MINUTE, 0)
+        startOfDay.set(Calendar.SECOND, 0)
+        startOfDay.set(Calendar.MILLISECOND, 0)
+        val endOfDay = currentDate.clone() as Calendar
+        endOfDay.set(Calendar.HOUR_OF_DAY, 23)
+        endOfDay.set(Calendar.MINUTE, 59)
+        endOfDay.set(Calendar.SECOND, 59)
+        endOfDay.set(Calendar.MILLISECOND, 999)
+
+        db.collection("events")
+            .whereGreaterThanOrEqualTo("date", startOfDay.time)
+            .whereLessThanOrEqualTo("date", endOfDay.time)
+            .orderBy("date", Query.Direction.ASCENDING)
+            .get()
+            .addOnSuccessListener { documents ->
+                val sections = documents.mapNotNull { doc ->
+                    val data = doc.data
+                    val title = data["title"] as? String ?: return@mapNotNull null
+                    val address = data["location"] as? String ?: ""
+                    val note = data["notes"] as? String
+                    val section = data["timePeriod"] as? String ?: ""
+                    val timeDate = data["time"]
+                    val time: String = when (timeDate) {
+                        is Date -> SimpleDateFormat("HH:mm", Locale.getDefault()).format(timeDate)
+                        is com.google.firebase.Timestamp -> SimpleDateFormat("HH:mm", Locale.getDefault()).format(timeDate.toDate())
+                        is Long -> SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(timeDate))
+                        else -> ""
+                    }
+                    PlannerSection(
+                        section = section,
+                        time = time,
+                        title = title,
+                        address = address,
+                        note = note,
+                        colorRes = R.color.orange
+                    )
+                }
+                adapter.updateSections(sections)
+            }
+            .addOnFailureListener { e ->
+                // Handle error
+            }
     }
 }
