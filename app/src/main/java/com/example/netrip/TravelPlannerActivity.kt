@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
 import android.text.Editable
 
-class TravelPlannerActivity : AppCompatActivity() {
+class TravelPlannerActivity : BaseActivity() {
     private val tripStart = Calendar.getInstance().apply { set(2025, 4, 15) } // May 15, 2025
     private val tripEnd = Calendar.getInstance().apply { set(2025, 4, 25) }   // May 25, 2025
     private var currentDay = 4 // Örnek: 4. gün
@@ -21,8 +20,12 @@ class TravelPlannerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_travel_planner)
+        setupUI()
+    }
 
+    override fun getLayoutId(): Int = R.layout.activity_travel_planner
+
+    private fun setupUI() {
         val rvPlannerEntries = findViewById<RecyclerView>(R.id.rvPlannerEntries)
         rvPlannerEntries.layoutManager = LinearLayoutManager(this)
 
@@ -101,12 +104,6 @@ class TravelPlannerActivity : AppCompatActivity() {
                 currentDay++
                 updateDateViews()
             }
-        }
-
-        val btnAdd = findViewById<ImageButton>(R.id.btnAdd)
-        btnAdd.setOnClickListener {
-            val intent = Intent(this, AddEventActivity::class.java)
-            startActivity(intent)
         }
 
         // Profil butonuna tıklama

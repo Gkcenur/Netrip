@@ -8,21 +8,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.netrip.adapter.ReservationAdapter
 import com.example.netrip.model.Reservation
 import com.example.netrip.model.ReservationType
 
-class ReservationsActivity : AppCompatActivity() {
+class ReservationsActivity : BaseActivity() {
     private lateinit var adapter: ReservationAdapter
     private lateinit var allReservations: List<Reservation>
     private lateinit var chipButtons: List<Button>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reservations)
+        // setContentView kaldırıldı, BaseActivity hallediyor
+        // Diğer UI işlemleri
+        // ...
 
         // Örnek veri
         allReservations = listOf(
@@ -94,6 +95,8 @@ class ReservationsActivity : AppCompatActivity() {
                 .show()
         }
     }
+
+    override fun getLayoutId(): Int = R.layout.activity_reservations
 
     private fun updateChipSelection(selectedIndex: Int) {
         chipButtons.forEachIndexed { index, button ->

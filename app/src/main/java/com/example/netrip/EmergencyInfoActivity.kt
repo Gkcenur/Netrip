@@ -2,14 +2,13 @@ package com.example.netrip
 
 import android.os.Bundle
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 
-class EmergencyInfoActivity : AppCompatActivity() {
+class EmergencyInfoActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_emergency_info)
-
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         btnBack.setOnClickListener { finish() }
     }
+
+    override fun getLayoutId(): Int = R.layout.activity_emergency_info
 }

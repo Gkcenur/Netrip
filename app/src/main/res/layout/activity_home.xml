@@ -326,7 +326,7 @@
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:src="@drawable/ic_travel_card"
+                            android:src="@drawable/ic_calendar"
                             android:contentDescription="@string/travel_planner" />
 
                         <TextView

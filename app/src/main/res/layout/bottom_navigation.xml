@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="72dp"
     android:orientation="horizontal"
     android:background="@color/white"
     android:elevation="8dp"
     android:gravity="center">
 
+    <!-- Homepage -->
     <LinearLayout
+        android:id="@+id/navHome"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/ic_home"
             android:contentDescription="@string/home" />
         <TextView
@@ -23,66 +25,70 @@
             android:layout_height="wrap_content"
             android:text="Home"
             android:textColor="@color/textSecondary"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
+    <!-- Travel Diary -->
     <LinearLayout
+        android:id="@+id/navDiary"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_trips"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_diary"
             android:contentDescription="@string/trips" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trips"
+            android:text="Diary"
             android:textColor="@color/textSecondary"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
+    <!-- Travel Planner -->
     <LinearLayout
+        android:id="@+id/navPlanner"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_stats"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_calendar"
             android:contentDescription="@string/stats" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stats"
+            android:text="Planner"
             android:textColor="@color/textSecondary"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
+    <!-- Reservations -->
     <LinearLayout
+        android:id="@+id/navReservations"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_profile"
-            android:background="@drawable/bg_circle_selected"
-            android:tint="@color/topBar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_reservation"
             android:contentDescription="@string/profile" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile"
-            android:textColor="@color/topBar"
-            android:textSize="12sp" />
+            android:text="Reservations"
+            android:textColor="@color/textSecondary"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>

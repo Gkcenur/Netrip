@@ -4,13 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class TravelDiaryActivity : AppCompatActivity() {
+class TravelDiaryActivity : BaseActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var diaryAdapter: DiaryEntryAdapter
     private val diaryList = mutableListOf<DiaryEntry>()
@@ -18,13 +17,23 @@ class TravelDiaryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_travel_diary)
+        setupUI()
+    }
 
-        findViewById<ImageView>(R.id.btnBack).setOnClickListener { finish() }
-        findViewById<ImageButton>(R.id.btnAdd).setOnClickListener {
+    override fun getLayoutId(): Int = R.layout.activity_travel_diary
+
+    private fun setupUI() {
+        // Back button
+        findViewById<ImageView>(R.id.btnBack)?.setOnClickListener {
+            finish()
+        }
+
+        // Add button
+        findViewById<ImageButton>(R.id.btnAdd)?.setOnClickListener {
             startActivity(Intent(this, AddDiaryActivity::class.java))
         }
 
+        // Setup RecyclerView
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this).apply {
             stackFromEnd = false

@@ -6,15 +6,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class BudgetActivity : AppCompatActivity() {
+class BudgetActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_budget)
-        supportActionBar?.hide()
+        // setContentView ve supportActionBar?.hide() kaldırıldı, BaseActivity hallediyor
+        // Diğer UI işlemleri aşağıda
 
         // Geri butonu
         val btnBack = findViewById<ImageView>(R.id.btnBack)
@@ -100,4 +99,6 @@ class BudgetActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun getLayoutId(): Int = R.layout.activity_budget
 }

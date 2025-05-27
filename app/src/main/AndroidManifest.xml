@@ -33,7 +33,7 @@
         <activity android:name=".AddReservationActivity" />
 
         <!-- Add Currency Converter Activity -->
-        <activity android:name=".CurrencyConverterActivity" />
+        <activity android:name=".CurrencyConverterActivity" android:launchMode="singleTop" />
 
         <!-- Add Profile Activity -->
         <activity android:name=".ProfileActivity" />

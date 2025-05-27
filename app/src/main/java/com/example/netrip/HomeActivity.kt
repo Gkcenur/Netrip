@@ -5,48 +5,46 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        val ivProfile = findViewById<ImageView>(R.id.ivProfile)
-        ivProfile.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
+        setupQuickAccessButtons()
+    }
+
+    override fun getLayoutId(): Int = R.layout.activity_home
+
+    private fun setupQuickAccessButtons() {
         val travelDiaryButton = findViewById<LinearLayout>(R.id.quickAccessTravelDiary)
         travelDiaryButton.setOnClickListener {
-            val intent = Intent(this, TravelDiaryActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, TravelDiaryActivity::class.java))
         }
+
         val travelPlannerButton = findViewById<LinearLayout>(R.id.quickAccessTravelPlanner)
         travelPlannerButton.setOnClickListener {
-            val intent = Intent(this, TravelPlannerActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, TravelPlannerActivity::class.java))
         }
+
         val budgetButton = findViewById<LinearLayout>(R.id.quickAccessBudget)
         budgetButton.setOnClickListener {
-            val intent = Intent(this, BudgetActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, BudgetActivity::class.java))
         }
+
         val emergencyButton = findViewById<LinearLayout>(R.id.quickAccessEmergency)
         emergencyButton.setOnClickListener {
-            val intent = Intent(this, EmergencyInfoActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, EmergencyInfoActivity::class.java))
         }
+
         val currencyConverterButton = findViewById<LinearLayout>(R.id.quickAccessCurrencyConverter)
         currencyConverterButton.setOnClickListener {
-            val intent = Intent(this, CurrencyConverterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CurrencyConverterActivity::class.java))
         }
+
         val reservationButton = findViewById<LinearLayout>(R.id.quickAccessReservation)
         reservationButton.setOnClickListener {
-            val intent = Intent(this, ReservationsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ReservationsActivity::class.java))
         }
     }
 }
