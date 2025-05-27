@@ -192,12 +192,9 @@
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_card"
                             android:hint="From"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="60dp"
+                            android:inputType="text"
+                            android:textColor="@color/textPrimary"
+                            android:padding="8dp"
                             android:gravity="center_vertical"/>
 
                         <TextView
@@ -223,12 +220,9 @@
                             android:layout_height="match_parent"
                             android:background="@drawable/bg_card"
                             android:hint="To"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="60dp"
+                            android:inputType="text"
+                            android:textColor="@color/textPrimary"
+                            android:padding="8dp"
                             android:gravity="center_vertical"/>
 
                         <TextView

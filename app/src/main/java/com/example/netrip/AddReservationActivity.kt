@@ -9,6 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AddReservationActivity : AppCompatActivity() {
 
@@ -52,9 +54,13 @@ class AddReservationActivity : AppCompatActivity() {
     private val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
     private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
 
+    private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_reservation)
+
+        db = FirebaseFirestore.getInstance()
 
         initializeViews()
         setupReservationTypeButtons()
@@ -229,8 +235,107 @@ class AddReservationActivity : AppCompatActivity() {
     }
 
     private fun saveReservation() {
-        // TODO: Implement saving logic based on selected type
-        Toast.makeText(this, "Reservation saved!", Toast.LENGTH_SHORT).show()
-        finish()
+        when (selectedReservationType) {
+            "Plane\nFlight" -> {
+                // Uçuş kaydetme kodun (zaten vardı)
+                val airline = etAirline.text.toString()
+                val flightNumber = etFlightNumber.text.toString()
+                val departureLocation = etFrom.text.toString()
+                val arrivalLocation = etTo.text.toString()
+                val departureDate = etDepartureDate.text.toString()
+                val arrivalDate = etArrivalDate.text.toString()
+                val confirmationNumber = etConfirmationNumber.text.toString()
+
+                val reservation = hashMapOf(
+                    "details" to hashMapOf(
+                        "airline" to airline,
+                        "flightNumber" to flightNumber,
+                        "departureLocation" to departureLocation,
+                        "arrivalLocation" to arrivalLocation,
+                        "departureDate" to departureDate,
+                        "arrivalDate" to arrivalDate,
+                        "confirmationNumber" to confirmationNumber
+                    ),
+                    "tripId" to "TRIP_ID", // Buraya uygun tripId'yi ekleyebilirsin
+                    "type" to "flight",
+                    "userId" to FirebaseAuth.getInstance().currentUser?.uid
+                )
+
+                db.collection("reservations").document("flight")
+                    .set(reservation)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Uçuş kaydedildi!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Hata oluştu!", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            "Hotel" -> {
+                // HOTEL için ekleyeceğin kod
+                val hotelName = etHotelName.text.toString()
+                val roomType = etRoomType.text.toString()
+                val numberOfGuests = etGuests.text.toString()
+                val checkInDate = etCheckInDate.text.toString()
+                val checkOutDate = etCheckOutDate.text.toString()
+                val confirmationNumber = etConfirmationNumber.text.toString()
+
+                val reservation = hashMapOf(
+                    "details" to hashMapOf(
+                        "name" to hotelName,
+                        "roomType" to roomType,
+                        "numberOfGuests" to numberOfGuests,
+                        "checkInDate" to checkInDate,
+                        "checkOutDate" to checkOutDate,
+                        "confirmationNumber" to confirmationNumber
+                    ),
+                    "tripId" to "TRIP_ID", // Buraya uygun tripId'yi ekleyebilirsin
+                    "type" to "hotel",
+                    "userId" to FirebaseAuth.getInstance().currentUser?.uid
+                )
+
+                db.collection("reservations").document("hotel")
+                    .set(reservation)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Otel kaydedildi!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Hata oluştu!", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            "Ticket\nActivity" -> {
+                val activityName = etActivityName.text.toString()
+                val location = etLocation.text.toString()
+                val numberOfTickets = etTickets.text.toString()
+                val date = etActivityDate.text.toString()
+                val time = etActivityTime.text.toString()
+                val confirmationNumber = etConfirmationNumber.text.toString()
+
+                val reservation = hashMapOf(
+                    "details" to hashMapOf(
+                        "name" to activityName,
+                        "location" to location,
+                        "numberOfTickets" to numberOfTickets,
+                        "date" to date,
+                        "time" to time,
+                        "confirmationNumber" to confirmationNumber
+                    ),
+                    "tripId" to "TRIP_ID", // Buraya uygun tripId'yi ekleyebilirsin
+                    "type" to "activity",
+                    "userId" to FirebaseAuth.getInstance().currentUser?.uid
+                )
+
+                db.collection("reservations").document("activityTickets")
+                    .set(reservation)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Aktivite kaydedildi!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Hata oluştu!", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
     }
 }

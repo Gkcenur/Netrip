@@ -176,5 +176,47 @@
             android:drawableStart="@drawable/ic_add"
             android:layout_marginBottom="24dp" />
 
+        <EditText
+            android:id="@+id/etAirline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Airline"/>
+
+        <EditText
+            android:id="@+id/etFlightNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Flight Number (e.g., AF1234)"/>
+
+        <EditText
+            android:id="@+id/etDepartureLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="From"/>
+
+        <EditText
+            android:id="@+id/etArrivalLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="To"/>
+
+        <EditText
+            android:id="@+id/etDepartureDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Departure Date (yyyy-MM-dd HH:mm)"/>
+
+        <EditText
+            android:id="@+id/etArrivalDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Arrival Date (yyyy-MM-dd HH:mm)"/>
+
+        <EditText
+            android:id="@+id/etConfirmationNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirmation Number (Optional)"/>
+
     </LinearLayout>
 </ScrollView>
