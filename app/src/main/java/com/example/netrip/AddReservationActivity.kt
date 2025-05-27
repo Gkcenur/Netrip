@@ -261,10 +261,9 @@ class AddReservationActivity : AppCompatActivity() {
                     "userId" to FirebaseAuth.getInstance().currentUser?.uid
                 )
 
-                db.collection("reservations").document("flight")
-                    .set(reservation)
+                db.collection("reservations").add(reservation)
                     .addOnSuccessListener {
-                        Toast.makeText(this, "Uçuş kaydedildi!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Rezervasyon kaydedildi!", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     .addOnFailureListener {
@@ -294,10 +293,9 @@ class AddReservationActivity : AppCompatActivity() {
                     "userId" to FirebaseAuth.getInstance().currentUser?.uid
                 )
 
-                db.collection("reservations").document("hotel")
-                    .set(reservation)
+                db.collection("reservations").add(reservation)
                     .addOnSuccessListener {
-                        Toast.makeText(this, "Otel kaydedildi!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Rezervasyon kaydedildi!", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     .addOnFailureListener {
@@ -326,10 +324,9 @@ class AddReservationActivity : AppCompatActivity() {
                     "userId" to FirebaseAuth.getInstance().currentUser?.uid
                 )
 
-                db.collection("reservations").document("activityTickets")
-                    .set(reservation)
+                db.collection("reservations").add(reservation)
                     .addOnSuccessListener {
-                        Toast.makeText(this, "Aktivite kaydedildi!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Rezervasyon kaydedildi!", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     .addOnFailureListener {

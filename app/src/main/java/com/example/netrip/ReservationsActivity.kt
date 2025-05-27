@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.netrip.adapter.ReservationAdapter
@@ -29,8 +30,8 @@ class ReservationsActivity : BaseActivity() {
         // ...
 
         val rvReservations = findViewById<RecyclerView>(R.id.rvReservations)
-        adapter = ReservationAdapter(reservations) { reservation ->
-            // Tıklanınca yapılacaklar (ör: detay sayfasına git)
+        adapter = ReservationAdapter(listOf()) { reservation ->
+            // Tıklanınca yapılacaklar
         }
         rvReservations.layoutManager = LinearLayoutManager(this)
         rvReservations.adapter = adapter
@@ -169,6 +170,7 @@ class ReservationsActivity : BaseActivity() {
                 }
                 allReservations = reservations.toList()
                 adapter.updateList(allReservations)
+                updateChipSelection(0)
             }
     }
 
